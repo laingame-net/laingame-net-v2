@@ -1,0 +1,54 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  margin: 0;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.header-paragraph {
+  display: block;
+  margin: 0;
+  margin-top: 2em;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.downloads a,
+.faq a,
+.header-paragraph a {
+  font-size: 1em;
+}
+
+a {
+  text-align: center;
+  font-size: 2em;
+  display: block;
+  text-decoration: none;
+  color: #ffa531;
+  font-family: "Courier New", serif;
+  font-weight: 700;
+  display: inline;
+}
+
+.downloads,
+.faq,
+.screenshots {
+  display: block;
+  margin: 0 auto;
+  padding-left: 5em;
+  padding-right: 5em;
+  text-align: left;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.cool-text {
+  color: #ffa531;
+}

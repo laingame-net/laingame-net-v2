@@ -1,0 +1,19 @@
+body {
+  color: #fff;
+  background-color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #ffa531;
+  font-family: courier;
+  font-size: 100%;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  border-width: 0;
+}

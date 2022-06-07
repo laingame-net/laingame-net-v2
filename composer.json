@@ -1,0 +1,16 @@
+{
+  "name": "ad044/laingame-net-v2",
+  "description": "Rewrite of laingame.net backend",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ad044\\LaingameNetV2\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "klein/klein": "^2.1",
+    "mantas-done/subtitles": "^0.3.10"
+  }
+}
