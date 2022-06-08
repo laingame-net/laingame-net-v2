@@ -38,8 +38,9 @@ $klein->respond('GET', '/bootleg', function ($request, $response, $service) {
 });
 
 $klein->respond('GET', '/site/[:site]', function ($request, $response, $service) {
-    if ($request->site != 'a' || $request->site != 'b') {
-        // TODO proper 404
+    if ($request->site !== 'a' && $request->site !== 'b') {
+        $response->redirect("/error", 404);
+        return;
     }
     $service->site = $request->site;
 
@@ -62,16 +63,25 @@ $klein->respond('GET', '/tag/[:tag]', function ($request, $response, $service) {
 });
 
 $klein->respond('GET', '/node/[:site]/[:id]', function ($request, $response, $service) {
-    if ($request->site != 'a' || $request->site != 'b') {
-        // TODO proper 404
+    if ($request->site !== 'a' && $request->site !== 'b') {
+        $response->redirect("/error", 404);
+        return;
     }
-    // TODO validity check on the id
-
-    $level = substr($request->id, 0, 2);
-
     $site_data = get_site_data($request->site);
 
-    $node = new Node($site_data[$level][$request->id]);
+    $level = substr($request->id, 0, 2);
+    $level_data = $site_data[$level];
+    if (is_null($level_data)) {
+        $response->redirect("/error", 404);
+        return;
+    }
+    $node_data = $level_data[$request->id];
+    if (is_null($node_data)) {
+        $response->redirect("/error", 404);
+        return;
+    }
+
+    $node = new Node($node_data);
 
     $reveals = array();
     foreach ($site_data as $level => $nodes) {
@@ -107,6 +117,15 @@ $klein->respond('GET', '/node/[:site]/[:id]', function ($request, $response, $se
     );
 
     $service->render('../src/views/media.php');
+});
+
+$klein->onHttpError(function ($code, $router) {
+    if ($code == 404) {
+        $router->response()->sendHeaders(true, true);
+        $service = $router->service();
+        $service->view_data = array('message' => 'Not found.');
+        $service->render('../src/views/error.php');
+    }
 });
 
 $klein->dispatch();
