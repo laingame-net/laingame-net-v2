@@ -67,13 +67,10 @@ img {
   display: none;
 }
 
-/* TODO place locally */
 @font-face {
   font-family: kuro;
-  src: url(https://laingame.net/build/de0a12572019bafea1ee6d35ec097184.woff2)
-      format("woff2"),
-    url(https://laingame.net/build/d7fd7c9f756d6cc982cbeb87d1234fa3.woff)
-      format("woff");
+  src: url("/static/font/kuro-bold.woff2") format("woff2"),
+    url("/static/font/kuro-bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
