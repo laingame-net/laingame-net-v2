@@ -22,7 +22,7 @@
 		</header>
 
 		<?php foreach ($this->view_data['levels'] as $level) :  ?>
-			<div class="level-head">
+			<div class="level-head" id="l<?= $level->number ?>">
 				<div class="line-top"></div>
 				<div class="level-label">
 					<div class="level-label-site">

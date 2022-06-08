@@ -42,8 +42,7 @@ $site = strtolower($data->site);
 						<tr>
 							<td class=ta4d1>Location:</td>
 							<td class=ta4d2>
-								// TODO
-								<a href="/index.php?site=0#l11">
+								<a href="/site/<?= $site ?>#l<?= $data->get_level() ?>">
 									<?= "site $data->site, "; ?>
 									<?= "level " . $data->get_level() . ","; ?>
 									<?= " #" . $data->get_number(); ?>
