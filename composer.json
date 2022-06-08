@@ -11,6 +11,7 @@
   "minimum-stability": "stable",
   "require": {
     "klein/klein": "^2.1",
-    "mantas-done/subtitles": "^0.3.10"
+    "mantas-done/subtitles": "^0.3.10",
+    "phpmailer/phpmailer": "^6.6"
   }
 }

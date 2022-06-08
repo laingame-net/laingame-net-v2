@@ -3,6 +3,7 @@
 use Ad044\LaingameNetV2\Models\Level;
 use Ad044\LaingameNetV2\Models\Node;
 use \Done\Subtitles\Subtitles;
+use PHPMailer\PHPMailer\PHPMailer;
 
 require '../vendor/autoload.php';
 
@@ -55,7 +56,23 @@ $klein->respond('GET', '/site/[:site]', function ($request, $response, $service)
 });
 
 $klein->respond('GET', '/feedback', function ($request, $response, $service) {
-    echo 'TODO';
+    $service->render('../src/views/feedback.php');
+});
+
+$klein->respond('POST', '/feedback', function ($request, $response, $service) {
+    $body = $request->param('body', null);
+    $email = $request->param('email', null);
+
+    // TODO proper handlers here
+    if (is_null($body) || is_null($email)) {
+        return;
+    }
+
+    if (strlen($body) < 1 || strlen($email) < 1) {
+        return;
+    }
+
+    // TODO send mail, log errors, send response, etc.
 });
 
 $klein->respond('GET', '/tag/[:site]/[:tag]', function ($request, $response, $service) {
