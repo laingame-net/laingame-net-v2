@@ -58,8 +58,26 @@ $klein->respond('GET', '/feedback', function ($request, $response, $service) {
     echo 'TODO';
 });
 
-$klein->respond('GET', '/tag/[:tag]', function ($request, $response, $service) {
-    echo 'TODO';
+$klein->respond('GET', '/tag/[:site]/[:tag]', function ($request, $response, $service) {
+    if ($request->site !== 'a' && $request->site !== 'b') {
+        $response->redirect("/error", 404);
+        return;
+    }
+
+    $tag = $request->tag;
+    $site_data = get_site_data($request->site);
+
+    $tagged_nodes = array();
+    foreach ($site_data as $level => $nodes) {
+        foreach ($nodes as $node) {
+            if (in_array($tag, $node["words"])) {
+                array_push($tagged_nodes, new Node($node));
+            };
+        }
+    };
+
+    $service->view_data = array('tag' => $tag, 'nodes' => $tagged_nodes, 'site' => strtolower($request->site));
+    $service->render('../src/views/tag.php');
 });
 
 $klein->respond('GET', '/node/[:site]/[:id]', function ($request, $response, $service) {
