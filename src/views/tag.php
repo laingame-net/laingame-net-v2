@@ -18,9 +18,9 @@ $site = $this->view_data["site"];
 
 <body>
 	<center>
-		<a href=index.html>index</a>&nbsp;&nbsp;&nbsp;
-		<a href=about.html>about</a>&nbsp;&nbsp;&nbsp;
-		<a href=feedback.php>feedback</a>&nbsp;&nbsp;&nbsp;
+		<a href="/">index</a>
+		<a href="/about">about</a>
+		<a href="/feedback">feedback</a>
 		<br>
 		<br>
 
