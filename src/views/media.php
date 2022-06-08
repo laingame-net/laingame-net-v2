@@ -16,7 +16,7 @@ $site = strtolower($data->site);
 	<META HTTP-EQUIV="Expires" CONTENT="0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<LINK rel="stylesheet" type="text/css" href="/static/css/media.css">
-	<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<link rel="SHORTCUT ICON" href="/static/favicon.ico" />
 	<title>lain game :: <?= $data->name ?></title>
 </head>
 

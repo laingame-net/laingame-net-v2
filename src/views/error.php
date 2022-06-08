@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/static/css/error.css" />
-	<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<link rel="SHORTCUT ICON" href="/static/favicon.ico" />
 	<title>lain game :: not found</title>
 </head>
 

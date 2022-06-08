@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<link rel="SHORTCUT ICON" href="/static/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 	<title>lain game :: site <?= strtoupper($this->site) ?></title>
 </head>
