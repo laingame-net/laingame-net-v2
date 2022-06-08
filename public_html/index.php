@@ -12,6 +12,17 @@ function get_site_data($site)
     return json_decode($file, true);
 }
 
+function get_lang($available_languages, $request)
+{
+    $selected_language = $request->paramsGet()->get('lang', null) ?? $request->cookies()->get('lang', null);
+
+    if (!is_null($selected_language) && array_key_exists($selected_language, $available_languages)) {
+        return $selected_language;
+    }
+
+    return 'en';
+}
+
 $klein = new \Klein\Klein();
 
 $klein->respond('GET', '/', function ($request, $response, $service) {
@@ -55,7 +66,6 @@ $klein->respond('GET', '/node/[:site]/[:id]', function ($request, $response, $se
         // TODO proper 404
     }
     // TODO validity check on the id
-    // TODO save language in cookie
 
     $level = substr($request->id, 0, 2);
 
@@ -77,11 +87,8 @@ $klein->respond('GET', '/node/[:site]/[:id]', function ($request, $response, $se
         'fr' => "French",
         'ko' => "Korean"
     );
-    $selected_language = $request->param('lang', 'en');
-    // in case weird string was passed in as lang, we set it back to en
-    if (!array_key_exists($selected_language, $available_languages)) {
-        $selected_language = 'en';
-    }
+    $selected_language = get_lang($available_languages, $request);
+    $response->cookie('lang', $selected_language);
 
     $transcription = array();
     $vtt_file = "../public_html/static/webvtt/$selected_language/$node->name.vtt";
